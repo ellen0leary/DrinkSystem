@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.recipesController">
+   <children>
+      <Text layoutX="238.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a Recipes">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="drinksList" layoutX="228.0" layoutY="71.0" prefWidth="150.0" />
+      <Text layoutX="101.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Drink" />
+      <Text layoutX="23.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Ingredent" />
+      <Text layoutX="300.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity Of Ingredent (ml)" />
+      <Text layoutX="42.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Steps of Recipes" />
+      <TextField fx:id="amount" layoutX="441.0" layoutY="117.0" />
+      <TextField fx:id="steps" layoutX="140.0" layoutY="261.0" prefHeight="74.0" prefWidth="339.0" />
+      <ChoiceBox fx:id="ingredientList" layoutX="140.0" layoutY="117.0" prefWidth="150.0" />
+      <ListView fx:id="ingredAndAmount" layoutX="140.0" layoutY="167.0" prefHeight="74.0" prefWidth="339.0" />
+      <Text layoutX="19.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Ingredents Added" />
+      <Button fx:id="RecipeSaveButton" layoutX="515.0" layoutY="342.0" mnemonicParsing="false" onAction="#RecipeSaveButton" text="Save" />
+      <Button fx:id="cancel" layoutX="33.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <Button layoutX="460.0" layoutY="142.0" mnemonicParsing="false" onAction="#addIngredientAndAmount" text="Add these Ingredents" />
+   </children>
+</AnchorPane>
