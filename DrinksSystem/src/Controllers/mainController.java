@@ -40,7 +40,7 @@ public class mainController {
      */
     public void save(ActionEvent actionEvent) {
         try {
-            //Main.save();
+            Main.save();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class mainController {
      */
     public void load(ActionEvent actionEvent) {
         try {
-            //Main.load();
+            Main.load();
         } catch (Exception e) {
             e.printStackTrace();
         }

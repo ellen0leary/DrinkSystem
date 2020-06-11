@@ -11,8 +11,8 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-//import com.thoughtworks.xstream.XStream;
-//import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import static Controllers.drinksController.drinkController;
 import static Controllers.ingredientsController.ingredientController;
@@ -22,8 +22,8 @@ import static Controllers.viewAllController.viewEverythingController;
 
 /*
 to do:
-    fix add ingredients in recipe add
     fix sort
+    set up xStream
  */
 public class Main extends Application {
     public static Main staticMain;
@@ -133,7 +133,7 @@ public class Main extends Application {
      * loads from an xml file
      * @throws Exception
      */
-    /*@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public static void load() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectInputStream is = xstream.createObjectInputStream(new FileReader("drinks.xml"));
@@ -146,7 +146,8 @@ public class Main extends Application {
     /**
      * saves to an xml file
      * @throws Exception
-
+     *
+     * */
     public static void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("drinks.xml"));
@@ -154,7 +155,7 @@ public class Main extends Application {
         out.writeObject(drink);
         out.writeObject(recipe);
         out.close();
-    }*/
+    }
 
     public static void main(String[] args) {
         launch(args);
