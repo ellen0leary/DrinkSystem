@@ -25,7 +25,6 @@ to do:
     fix sort
  */
 public class Main extends Application {
-    public static Main staticMain;
     private static Scene start,addIngredient, addDrink, addRecipe, viewAll,viewSearch;
     private static Stage stage;
     public static GenericLinkedList<Drinks> drink= new GenericLinkedList<>();
@@ -36,7 +35,7 @@ public class Main extends Application {
     /**
      * start function of the program
      * @param primaryStage uses as the stage for scene builder
-     * @throws Exception
+     * @throws Exception of it can't find scenes
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -88,8 +87,8 @@ public class Main extends Application {
     }
 
     /**
-     * sets the scene for updating ingredents
-     * @param i index of the ingredent needing updating
+     * sets the scene for updating ingredients
+     * @param i index of the ingredient needing updating
      */
     public static void setUpdateIngredient(int i){
         stage.setScene(addIngredient);
@@ -129,7 +128,7 @@ public class Main extends Application {
 
     /**
      * loads from an xml file
-     * @throws Exception
+     * @throws Exception if error is found
      */
     @SuppressWarnings("unchecked")
     public static void load() throws Exception {
@@ -143,7 +142,7 @@ public class Main extends Application {
 
     /**
      * saves to an xml file
-     * @throws Exception
+     * @throws Exception if error is found
      *
      * */
     public static void save() throws Exception {
