@@ -15,9 +15,10 @@ public class recipesController {
     public static recipesController recipeController;
     public Button RecipeSaveButton,cancel;
     public TextField amount, steps;
-    public ChoiceBox drinksList, ingredientList;
-    public HashMap<Ingredients, Integer> ingredientsAndAmount;
-    public ListView ingredAndAmount;
+    public ChoiceBox<String> drinksList;
+    public ChoiceBox<String> ingredientList;
+    public HashMap<Ingredients, Integer> ingredientsAndAmount = new HashMap<>();
+    public ListView<String> ingredAndAmount;
 
     /**
      * loads the main menu page
@@ -29,14 +30,13 @@ public class recipesController {
     /**
      * abd the options for both choice boxes
      */
-    @SuppressWarnings("unchecked")
     public void addDrinkChoice(){
         drinksList.getItems().clear();
         ingredientList.getItems().clear();
         for(int i=0; i< drink.length();i++)
-            drinksList.getItems().add(drink.get(i).toString());
+            drinksList.getItems().add(drink.get(i).getName());
         for(int i=0; i< Other.Main.ingredient.length();i++)
-            ingredientList.getItems().add(Other.Main.ingredient.get(i).toString());
+            ingredientList.getItems().add(Other.Main.ingredient.get(i).getName());
     }
 
     /**
@@ -44,7 +44,8 @@ public class recipesController {
      */
     public void addIngredientAndAmount(){
         Ingredients chossenIngredent = Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex());
-        ingredientsAndAmount.put(chossenIngredent, Integer.parseInt(amount.toString()));
+        ingredientsAndAmount.put(chossenIngredent, Integer.parseInt(amount.getText()));
+        ingredAndAmount.getItems().add(chossenIngredent.getName() +" "+amount.getText()+" ml");
     }
 
     /**
@@ -69,10 +70,8 @@ public class recipesController {
     /**
      * clears all the fields
      */
-    @SuppressWarnings("unchecked")
     private void clearField() {
         drinksList.setValue(null);
-        //ingredientList.setText("");
         amount.setText("");
         steps.setText("");
     }

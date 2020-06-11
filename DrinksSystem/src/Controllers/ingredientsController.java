@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import static Controllers.viewAllController.viewEverythingController;
 import static Other.Main.ingredient;
 
 

@@ -24,7 +24,6 @@ import static Controllers.viewAllController.viewEverythingController;
 to do:
     fix add ingredients in recipe add
     fix sort
-
  */
 public class Main extends Application {
     public static Main staticMain;

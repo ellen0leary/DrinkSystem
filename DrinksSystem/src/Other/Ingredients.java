@@ -6,8 +6,8 @@ public class Ingredients {
     private int ABV;
 
     /**
-     * main constructor for ingredents
-     * @param name name of ingredent
+     * main constructor for ingredients
+     * @param name name of ingredient
      * @param description description of ingredient
      * @param ABV abv of ingredient
      */

@@ -7,20 +7,29 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class RecipesTest {
     Recipes r1,r2;
+    Ingredients i1, i2;
     Drinks d1,d2;
+    HashMap<Ingredients, Integer> ingredients = new HashMap<>();
 
     @Before
     public void setUp() throws Exception {
         d1 = new Drinks("Vodka","Russia","Its vodka","a link");
         d2= new Drinks("Rum","Somewhere","Its rum","another link");
 
-        r1 = new Recipes(d1,"Lemon",30,"Mix vodka and lemon");
-        r2 = new Recipes(d1,"Cola",200,"Mix Vodka and Cola");
+        i1 = new Ingredients("Lemon","Its a lemon",0);
+        i2 = new Ingredients("Lime","Its a green lemon",0);
+
+        ingredients.put(i1, 40);
+        ingredients.put(i2, 60);
+        r1 = new Recipes(d1,ingredients,30,"Mix vodka and lemon");
+        r2 = new Recipes(d1,ingredients,200,"Mix Vodka and Cola");
 
     }
 
@@ -43,17 +52,21 @@ public class RecipesTest {
     }
 
     @Test
-    public void getIngredents() {
-        assertEquals("Lemon", r1.getIngredients());
-        assertEquals("Cola",r2.getIngredients());
+    public void getIngredients() {
+        assertEquals(ingredients, r1.getIngredients());
+        assertEquals(ingredients,r2.getIngredients());
     }
 
     @Test
     public void setIngredents() {
-        r1.setIngredients("Lime");
-        assertEquals("Lime", r1.getIngredients());
-        r2.setIngredients("Lemonade");
-        assertEquals("Lemonade",r2.getIngredients());
+        ingredients.clear();
+        ingredients.put(i2, 15);
+        r1.setIngredients(ingredients);
+        assertEquals(ingredients, r1.getIngredients());
+        ingredients.clear();
+        ingredients.put(i1,10);
+        r2.setIngredients(ingredients);
+        assertEquals(ingredients,r2.getIngredients());
     }
 
     @Test
