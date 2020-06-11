@@ -22,7 +22,9 @@ import static Controllers.viewAllController.viewEverythingController;
 
 /*
 to do:
-    fix sort
+    search controller:
+        fix sort A-Z
+        fix selection sort
  */
 public class Main extends Application {
     private static Scene start,addIngredient, addDrink, addRecipe, viewAll,viewSearch;
@@ -46,7 +48,6 @@ public class Main extends Application {
             Parent addRecipes = FXMLLoader.load(getClass().getResource("../FXML/addRecipes.fxml"));
             Parent viewAllStuff = FXMLLoader.load(getClass().getResource("../FXML/viewAll.fxml"));
             Parent viewSearchEverything = FXMLLoader.load(getClass().getResource("../FXML/search.fxml"));
-
 
             stage = primaryStage;
             primaryStage.setTitle("Main Menu");

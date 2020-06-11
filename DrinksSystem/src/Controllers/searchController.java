@@ -12,8 +12,8 @@ public class searchController {
     public static searchController searchEverything;
     public Button search,cancel, sort;
     public TextField drinkName, ABV, descriptionKeyword;
-    public ListView searchResults;
-    public ChoiceBox sortBy;
+    public ListView<String> searchResults;
+    public ChoiceBox<String> sortBy;
 
     /**
      * search through everything for details entered
@@ -39,11 +39,12 @@ public class searchController {
      * tries to sort out everything but it don't work
      */
     public void sort(){
-        ListView sortedResults = new ListView();
-        if (sortBy.getSelectionModel().getSelectedItem().toString().equals("Sort by A->Z")) {
-            int[] array = null;
+        ListView<String> sortedResults = new ListView<>();
+        if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by A->Z")) {
+            int[] array = new int[sortedResults.getItems().size()];
+            //print(sortedResults.getItems().size());
             for (int i = 0; i <= searchResults.getItems().size(); i++) {
-                array[i] = hash(searchResults.getItems().get(i).toString());
+                array[i] = hash(searchResults.getItems().get(i));
             }
             selectionSort(array);
         } else {
@@ -68,18 +69,18 @@ public class searchController {
 
     /**
      * src: https://www.javatpoint.com/selection-sort-in-java
-     * @param str
+     * @param arr
      */
-    public void selectionSort(int[] str){
-        for (int i=1; i<str.length; i++){
+    public void selectionSort(int[] arr){
+        for (int i=1; i<arr.length; i++){
             int spare = i;
-            for (int e=i; e<str.length;e++){
-                if (str[e]<str[spare])
+            for (int e=i; e<arr.length;e++){
+                if (arr[e]<arr[spare])
                     spare=e;
             }
-            int smallestNum = str[spare];
-            str[spare] = str[i];
-            str[i] = smallestNum;
+            int smallestNum = arr[spare];
+            arr[spare] = arr[i];
+            arr[i] = smallestNum;
         }
     }
 
