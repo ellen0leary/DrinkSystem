@@ -23,15 +23,14 @@ import static Controllers.viewAllController.viewEverythingController;
 /*
 to do:
     fix sort
-    set up xStream
  */
 public class Main extends Application {
     public static Main staticMain;
     private static Scene start,addIngredient, addDrink, addRecipe, viewAll,viewSearch;
     private static Stage stage;
-    public static GenericLinkedList<Drinks> drink= new GenericLinkedList<Drinks>();
-    public static GenericLinkedList<Ingredients> ingredient= new GenericLinkedList<Ingredients>();
-    public static GenericLinkedList<Recipes> recipe= new GenericLinkedList<Recipes>();
+    public static GenericLinkedList<Drinks> drink= new GenericLinkedList<>();
+    public static GenericLinkedList<Ingredients> ingredient= new GenericLinkedList<>();
+    public static GenericLinkedList<Recipes> recipe= new GenericLinkedList<>();
 
 
     /**
@@ -41,7 +40,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/start.fxml"));
             Parent addDrinks = FXMLLoader.load(getClass().getResource("../FXML/addDrink.fxml"));
