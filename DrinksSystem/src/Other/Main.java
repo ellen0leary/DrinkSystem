@@ -20,6 +20,12 @@ import static Controllers.recipesController.recipeController;
 import static Controllers.searchController.searchEverything;
 import static Controllers.viewAllController.viewEverythingController;
 
+/*
+to do:
+    fix add ingredients in recipe add
+    fix sort
+
+ */
 public class Main extends Application {
     public static Main staticMain;
     private static Scene start,addIngredient, addDrink, addRecipe, viewAll,viewSearch;

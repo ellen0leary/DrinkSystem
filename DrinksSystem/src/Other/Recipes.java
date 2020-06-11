@@ -1,10 +1,11 @@
 package Other;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Recipes {
     private Drinks drink;
-    private ArrayList<Ingredients> ingredients;
+    private HashMap<Ingredients, Integer> ingredients;
     private int quantities;
     private String recipeSteps;
 
@@ -15,7 +16,7 @@ public class Recipes {
      * @param quantities amounts of quantities
      * @param recipeSteps Steps of the recipies
      */
-    public Recipes(Drinks drink, ArrayList<Ingredients> ingredients, int quantities, String recipeSteps) {
+    public Recipes(Drinks drink, HashMap<Ingredients, Integer> ingredients, int quantities, String recipeSteps) {
         this.drink = drink;
         this.ingredients = ingredients;
         this.quantities = quantities;
@@ -42,7 +43,7 @@ public class Recipes {
      * gets the ingredents
      * @return ingredents
      */
-    public ArrayList<Ingredients> getIngredients() {
+    public HashMap<Ingredients, Integer> getIngredients() {
         return ingredients;
     }
 
@@ -50,7 +51,7 @@ public class Recipes {
      * sets the ingredients for the recipes
      * @param ingredients ingredients used in recipes
      */
-    public void setIngredients(ArrayList<Ingredients> ingredients) {
+    public void setIngredients(HashMap<Ingredients, Integer> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -94,7 +95,7 @@ public class Recipes {
     public String toString() {
         return "Recipes " +
                 "drink = " + drink +
-                ", ingredients = " + ingredients  +
+                ", ingredients = " + ingredients.toString()  +
                 ", quantities = " + quantities +
                 ", recipeSteps = " + recipeSteps ;
     }

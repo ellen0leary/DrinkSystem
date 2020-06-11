@@ -7,6 +7,8 @@ import Other.Recipes;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.util.HashMap;
+
 import static Other.Main.*;
 
 public class recipesController {
@@ -15,7 +17,7 @@ public class recipesController {
     public Button RecipeSaveButton,cancel;
     public TextField amount, steps;
     public ChoiceBox drinksList, ingredientList;
-    public String ingredientsAndAmount;
+    public HashMap<Ingredients, Integer> ingredientsAndAmount;
     public ListView ingredAndAmount;
 
     /**
@@ -43,9 +45,8 @@ public class recipesController {
      * andds the ingredient and amount
      */
     public void addIngredientAndAmount(){
-        String ingredientInput= Other.Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex()).getName() +"  "+ amount.getText() + "ml";
-        ingredAndAmount.getItems().add(ingredientInput);
-        ingredientsAndAmount += ingredientInput;
+        Ingredients chossenIngredent = Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex());
+        ingredientsAndAmount.put(chossenIngredent, Integer.parseInt(amount.toString()));
     }
 
     /**
@@ -54,7 +55,6 @@ public class recipesController {
      */
     public void RecipeSaveButton(ActionEvent actionEvent) {
         Drinks drinkChoice = drink.get(drinksList.getSelectionModel().getSelectedIndex());
-        //String ingredients = ingredientList.get;
         int quantities = Integer.parseInt(amount.getText());
         String recipeSteps = steps.getText();
         recipe.add(new Recipes(drinkChoice, ingredientsAndAmount, quantities, recipeSteps));
