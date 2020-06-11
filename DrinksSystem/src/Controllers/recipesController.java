@@ -4,7 +4,6 @@ import Other.Drinks;
 import Other.Ingredients;
 import Other.Main;
 import Other.Recipes;
-import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
 import java.util.HashMap;
@@ -22,9 +21,8 @@ public class recipesController {
 
     /**
      * loads the main menu page
-     * @param actionEvent
      */
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel() {
         Main.setMainMenu();
     }
 
@@ -42,7 +40,7 @@ public class recipesController {
     }
 
     /**
-     * andds the ingredient and amount
+     * ands the ingredient and amount
      */
     public void addIngredientAndAmount(){
         Ingredients chossenIngredent = Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex());
@@ -51,9 +49,8 @@ public class recipesController {
 
     /**
      * saves the recipes
-     * @param actionEvent
      */
-    public void RecipeSaveButton(ActionEvent actionEvent) {
+    public void RecipeSaveButton() {
         Drinks drinkChoice = drink.get(drinksList.getSelectionModel().getSelectedIndex());
         int quantities = Integer.parseInt(amount.getText());
         String recipeSteps = steps.getText();
