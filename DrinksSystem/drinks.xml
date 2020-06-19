@@ -1,0 +1,24 @@
+<object-stream>
+  <Other.GenericLinkedList/>
+  <Other.GenericLinkedList>
+    <head>
+      <next>
+        <contents class="Other.Drinks">
+          <name>wef</name>
+          <country>efw</country>
+          <description>wgf</description>
+          <imageLink>rrfdz</imageLink>
+          <ABV>0</ABV>
+        </contents>
+      </next>
+      <contents class="Other.Drinks">
+        <name>zsrg</name>
+        <country>rgew</country>
+        <description>sef</description>
+        <imageLink>wefszdeg</imageLink>
+        <ABV>0</ABV>
+      </contents>
+    </head>
+  </Other.GenericLinkedList>
+  <Other.GenericLinkedList/>
+</object-stream>
