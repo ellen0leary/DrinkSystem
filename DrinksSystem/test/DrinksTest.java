@@ -8,10 +8,10 @@ public class DrinksTest {
     Drinks d1,d2,d3,d4;
     @org.junit.Before
     public void setUp() throws Exception {
-        d1 = new Drinks("Cola", "America", "It's cola", "https://www.coca-cola.ie/content/dam/journey/gb/en/hidden/Products/lead-brand-image/coca-cola-original-taste-gb-lead-598x336.rendition.320.179.jpg");
-        d2 = new Drinks("Water", "literally everywhere","It's water","https://www.bbcgoodfood.com/sites/default/files/editor_files/2019/10/hydration-guide-main-image-700-350.jpg");
-        d3 = new Drinks("Carlsberg","Denmark","A 3.8% danish pilsner","https://nutsaboutwine.ie/wp-content/uploads/2015/01/carlsberg-bottle1.jpg");
-        d4 = new Drinks("Bulmers","Ireland","A 4% Irish Cider","https://nutsaboutwine.ie/wp-content/uploads/2015/01/bulmers-cider-can-468x468.jpg");
+        d1 = new Drinks("Cola", "America", "It's cola");
+        d2 = new Drinks("Water", "literally everywhere","It's water");
+        d3 = new Drinks("Carlsberg","Denmark","A 3.8% danish pilsner");
+        d4 = new Drinks("Bulmers","Ireland","A 4% Irish Cider");
     }
 
     @org.junit.After
@@ -78,31 +78,11 @@ public class DrinksTest {
         assertEquals("cider", d4.getDescription());
     }
 
-    @org.junit.Test
-    public void getImageLink() {
-        assertEquals("https://www.coca-cola.ie/content/dam/journey/gb/en/hidden/Products/lead-brand-image/coca-cola-original-taste-gb-lead-598x336.rendition.320.179.jpg", d1.getImageLink());
-        assertEquals("https://www.bbcgoodfood.com/sites/default/files/editor_files/2019/10/hydration-guide-main-image-700-350.jpg", d2.getImageLink());
-        assertEquals("https://nutsaboutwine.ie/wp-content/uploads/2015/01/carlsberg-bottle1.jpg",d3.getImageLink());
-        assertEquals("https://nutsaboutwine.ie/wp-content/uploads/2015/01/bulmers-cider-can-468x468.jpg", d4.getImageLink());
-    }
-
-    @org.junit.Test
-    public void setImageLink() {
-        d1.setImageLink("something shorter");
-        assertEquals("something shorter", d1.getImageLink());
-        d2.setImageLink("these need to be shorter");
-        assertEquals("these need to be shorter", d2.getImageLink());
-        d3.setImageLink("anything shorter");
-        assertEquals("anything shorter",d3.getImageLink());
-        d4.setImageLink("short");
-        assertEquals("short", d4.getImageLink());
-    }
 
     @org.junit.Test
     public void toStringUsesAllFields() {
         assertThat(d1.toString().contains("Cola"), is(true));
         assertThat(d1.toString().contains("America"), is(true));
         assertThat(d1.toString().contains("It's cola"), is(true));
-        assertThat(d1.toString().contains("https://www.coca-cola.ie/content/dam/journey/gb/en/hidden/Products/lead-brand-image/coca-cola-original-taste-gb-lead-598x336.rendition.320.179.jpg"),is(true));
     }
 }
