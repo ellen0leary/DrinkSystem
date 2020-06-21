@@ -7,9 +7,10 @@ public class Ingredients {
 
     /**
      * main constructor for ingredients
-     * @param name name of ingredient
+     *
+     * @param name        name of ingredient
      * @param description description of ingredient
-     * @param ABV abv of ingredient
+     * @param ABV         abv of ingredient
      */
     public Ingredients(String name, String description, int ABV) {
         this.name = name;
@@ -19,6 +20,7 @@ public class Ingredients {
 
     /**
      * get the name of ingredient
+     *
      * @return
      */
     public String getName() {
@@ -27,6 +29,7 @@ public class Ingredients {
 
     /**
      * gets the description of ingredients
+     *
      * @return
      */
     public String getDescription() {
@@ -35,6 +38,7 @@ public class Ingredients {
 
     /**
      * gets the adv of ingredients
+     *
      * @return
      */
     public int getABV() {
@@ -43,6 +47,7 @@ public class Ingredients {
 
     /**
      * sets the name of ingredient
+     *
      * @param name
      */
     public void setName(String name) {
@@ -51,6 +56,7 @@ public class Ingredients {
 
     /**
      * sets the description of ingredient
+     *
      * @param description
      */
     public void setDescription(String description) {
@@ -59,6 +65,7 @@ public class Ingredients {
 
     /**
      * sets the abv of the ingredient
+     *
      * @param ABV
      */
     public void setABV(int ABV) {
@@ -67,14 +74,15 @@ public class Ingredients {
 
     /**
      * creates a string of ingredients
+     *
      * @return string of ingredients
      */
     @Override
     public String toString() {
         return "Ingredients" +
-                "name = " + name  +
+                "name = " + name +
                 ", ABV = " + ABV +
                 ", description = " + description;
-                        }
+    }
 
-                        }
+}

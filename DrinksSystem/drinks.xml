@@ -1,21 +1,27 @@
 <object-stream>
-  <Other.GenericLinkedList/>
   <Other.GenericLinkedList>
     <head>
       <next>
-        <contents class="Other.Drinks">
-          <name>wef</name>
-          <country>efw</country>
-          <description>wgf</description>
-          <imageLink>rrfdz</imageLink>
+        <contents class="Other.Ingredients">
+          <name>lemon juice</name>
+          <description>Its lemon juice</description>
           <ABV>0</ABV>
         </contents>
       </next>
+      <contents class="Other.Ingredients">
+        <name>lime juice</name>
+        <description>Its lime juice</description>
+        <ABV>0</ABV>
+      </contents>
+    </head>
+  </Other.GenericLinkedList>
+  <Other.GenericLinkedList>
+    <head>
       <contents class="Other.Drinks">
-        <name>zsrg</name>
-        <country>rgew</country>
-        <description>sef</description>
-        <imageLink>wefszdeg</imageLink>
+        <name>red wine</name>
+        <country>italy</country>
+        <description>a fruity wine from Italy</description>
+        <imageLink></imageLink>
         <ABV>0</ABV>
       </contents>
     </head>

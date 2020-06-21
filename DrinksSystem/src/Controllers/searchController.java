@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
+
 import static Other.Main.*;
 
 public class searchController {
@@ -16,6 +17,7 @@ public class searchController {
     public ListView<String> searchResults;
     public ChoiceBox<String> sortBy;
     public ArrayList<String> results = new ArrayList<>();
+    //public ChoiceBox drinksIngore, ingredientsIngore, repiceIngore;
     int[] array;
 
     /**
@@ -23,31 +25,33 @@ public class searchController {
      */
     public void searchButton() {
         searchResults.getItems().clear();
-        String drinkSelection = drinkName.getText().toLowerCase();
+        String drinkSelection = drinkName.getText();
         String ABVSelection = ABV.getText().toLowerCase();
         String descriptionSelection = descriptionKeyword.getText().toLowerCase();
-        int i = 0;
-        for (; i <= drink.length(); i++)
-            if ((drink.get(i).getName().toLowerCase().contains(drinkSelection)) ||
-                    (drink.get(i).toString().toLowerCase().contains(ABVSelection)) ||
+        for (int i = 0; i < drink.length(); i++) {
+            if ((drink.get(i).getName().toLowerCase().contains(drinkSelection.toLowerCase())) ||
+                    (drink.get(i).toString().contains(ABVSelection)) ||
                     (drink.get(i).getName().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(drink.get(i).toString());
                 results.add(drink.get(i).toString());
             }
-        for (; i <= ingredient.length(); i++)
-            if ((ingredient.get(i).getName().toLowerCase().contains(drinkSelection)) ||
+        }
+        for (int i = 0; i < ingredient.length(); i++) {
+            if ((ingredient.get(i).toString().toLowerCase().contains(drinkSelection)) ||
                     (ingredient.get(i).toString().toLowerCase().contains(ABVSelection)) ||
-                    (ingredient.get(i).getName().toLowerCase().contains(descriptionSelection))) {
+                    (ingredient.get(i).toString().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(ingredient.get(i).toString());
                 results.add(ingredient.get(i).toString());
             }
-        for (; i <= recipe.length(); i++)
+        }
+        for (int i = 0; i < recipe.length(); i++) {
             if ((recipe.get(i).toString().toLowerCase().contains(drinkSelection)) ||
                     (recipe.get(i).toString().toLowerCase().contains(ABVSelection)) ||
-                    (ingredient.get(i).getName().toLowerCase().contains(descriptionSelection))) {
+                    (recipe.get(i).getRecipeSteps().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(recipe.get(i).toString());
                 results.add(recipe.get(i).toString());
             }
+        }
     }
 
     /**
@@ -57,19 +61,18 @@ public class searchController {
         if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by A->Z")) {
             sortByAToZ();
         } else if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by Z-A")) {
-            sortByAToZ();
-            //array;
+            sortByZToA();
         } else {
             for (int i = 0; i <= searchResults.getItems().size(); i++)
                 if (searchResults.getItems().contains("Drink")) {
                 }
-            //sortedResults = searchResults;
         }
     }
-    private void sortByAToZ(){
+
+    private void sortByAToZ() {
         array = new int[searchResults.getItems().size()];
         System.out.println(searchResults.getItems().size());
-        for (int i = 0; i <searchResults.getItems().size(); i++) {
+        for (int i = 0; i < searchResults.getItems().size(); i++) {
             array[i] = hash(results.get(i));
         }
         insertionSort(array);
@@ -82,8 +85,27 @@ public class searchController {
             }
         }
     }
+
+    private void sortByZToA() {
+        array = new int[searchResults.getItems().size()];
+        System.out.println(searchResults.getItems().size());
+        for (int i = 0; i < searchResults.getItems().size(); i++) {
+            array[i] = hash(results.get(i));
+        }
+        insertionSort(array);
+        searchResults.getItems().clear();
+        for (int i = array.length - 1; i > 0; i--) {
+            for (String result : results) {
+                if (array[i] == hash(result)) {
+                    searchResults.getItems().add(result);
+                }
+            }
+        }
+    }
+
     /**
      * an attempt an insertion sort
+     *
      * @param a
      */
     public void insertionSort(int[] a) {
@@ -97,13 +119,14 @@ public class searchController {
 
     /**
      * hashes a string based on the first char in the drink name
+     *
      * @param str
      * @return
      */
     public int hash(String str) {
         int hash = 7;
-        for(int i=0; i<str.length(); i++){
-            hash = 13*hash + str.charAt(i);
+        for (int i = 0; i < str.length(); i++) {
+            hash = 13 * hash + str.charAt(i);
         }
         return hash;
     }
@@ -123,7 +146,7 @@ public class searchController {
      */
     public void startView() {
         sortBy.getItems().clear();
-        sortBy.getItems().addAll("Sort by A->Z","Sort by Z->A", "Sort by ABV %");
+        sortBy.getItems().addAll("Sort by A->Z", "Sort by Z->A", "Sort by ABV %");
     }
 
     public void initialize() {

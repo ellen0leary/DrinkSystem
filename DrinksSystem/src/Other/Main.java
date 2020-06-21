@@ -20,12 +20,6 @@ import static Controllers.recipesController.recipeController;
 import static Controllers.searchController.searchEverything;
 import static Controllers.viewAllController.viewEverythingController;
 
-/*
-to do:
-    search controller:
-        fix sort A-Z
-        fix selection sort
- */
 public class Main extends Application {
     private static Scene start,addIngredient, addDrink, addRecipe, viewAll,viewSearch;
     private static Stage stage;

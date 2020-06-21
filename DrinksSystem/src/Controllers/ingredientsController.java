@@ -36,7 +36,7 @@ public class ingredientsController {
         Main.setMainMenu();
         clearField();
         for (Ingredients s : ingredient) {
-            System.out.println(s.getName());
+            System.out.println(s.toString());
         }
     }
 

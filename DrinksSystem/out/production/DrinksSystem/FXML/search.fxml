@@ -15,16 +15,16 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="148.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-      <Text layoutX="148.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ABV" />
-      <Text layoutX="149.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description keyword" />
-      <TextField fx:id="drinkName" layoutX="293.0" layoutY="99.0" />
-      <TextField fx:id="ABV" layoutX="293.0" layoutY="137.0" />
-      <TextField fx:id="descriptionKeyword" layoutX="293.0" layoutY="179.0" />
-      <Button fx:id="search" layoutX="442.0" layoutY="214.0" mnemonicParsing="false" onAction="#searchButton" text="Search" />
-      <ListView fx:id="searchResults" layoutX="39.0" layoutY="277.0" prefHeight="156.0" prefWidth="534.0" />
+      <Text layoutX="137.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingore" />
+      <Text layoutX="143.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ABV" />
+      <Text layoutX="143.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description keyword" />
+      <TextField fx:id="drinkName" layoutX="293.0" layoutY="91.0" />
+      <TextField fx:id="ABV" layoutX="293.0" layoutY="125.0" />
+      <TextField fx:id="descriptionKeyword" layoutX="293.0" layoutY="158.0" />
+      <Button fx:id="search" layoutX="442.0" layoutY="225.0" mnemonicParsing="false" onAction="#searchButton" text="Search" />
+      <ListView fx:id="searchResults" layoutX="39.0" layoutY="298.0" prefHeight="156.0" prefWidth="534.0" />
       <Button fx:id="cancel" layoutX="39.0" layoutY="454.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
-      <Button fx:id="sort" layoutX="189.0" layoutY="252.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
-      <ChoiceBox fx:id="sortBy" layoutX="39.0" layoutY="252.0" prefWidth="150.0" />
+      <Button fx:id="sort" layoutX="189.0" layoutY="273.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <ChoiceBox fx:id="sortBy" layoutX="39.0" layoutY="273.0" prefWidth="150.0" />
    </children>
 </Pane>
