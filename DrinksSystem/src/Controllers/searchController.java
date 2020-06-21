@@ -7,7 +7,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
-
 import static Other.Main.*;
 
 public class searchController {
@@ -33,21 +32,21 @@ public class searchController {
                     (drink.get(i).toString().toLowerCase().contains(ABVSelection)) ||
                     (drink.get(i).getName().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(drink.get(i).toString());
-                results.add(drink.get(i).getName());
+                results.add(drink.get(i).toString());
             }
         for (; i <= ingredient.length(); i++)
             if ((ingredient.get(i).getName().toLowerCase().contains(drinkSelection)) ||
                     (ingredient.get(i).toString().toLowerCase().contains(ABVSelection)) ||
                     (ingredient.get(i).getName().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(ingredient.get(i).toString());
-                results.add(ingredient.get(i).getName());
+                results.add(ingredient.get(i).toString());
             }
         for (; i <= recipe.length(); i++)
             if ((recipe.get(i).toString().toLowerCase().contains(drinkSelection)) ||
                     (recipe.get(i).toString().toLowerCase().contains(ABVSelection)) ||
                     (ingredient.get(i).getName().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(recipe.get(i).toString());
-                results.add(recipe.get(i).getDrink().getName());
+                results.add(recipe.get(i).toString());
             }
     }
 
@@ -55,32 +54,11 @@ public class searchController {
      * tries to sort out everything but it don't work
      */
     public void sort() {
-        //ListView<String> sortedResults = new ListView<>();
         if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by A->Z")) {
-            array = new int[searchResults.getItems().size()];
-            System.out.println(searchResults.getItems().size());
-            for (int i = 0; i <searchResults.getItems().size(); i++) {
-                System.out.println(hash(results.get(i)));
-                array[i] = hash(results.get(i));
-            }
-            System.out.println("Before sort: ");
-            for(int i=0; i<array.length; i++) {
-                System.out.println(i+ " :" +array[i]);
-            }
-            insertionSort(array);
-            System.out.println("After sort");
-            for(int i=0; i<array.length; i++) {
-                System.out.println(i+ " :" +array[i]);
-            }
-            searchResults.getItems().clear();
-            for (int i = 0; i < array.length; i++) {
-                for(int x=0; i<results.size(); i++) {
-                    if (array[i] ==hash(results.get(x)))
-                        searchResults.getItems().add(results.get(x));
-                    else
-                        searchResults.getItems().add(array[i] + ":  "+ hash(results.get(x)));
-                }
-            }
+            sortByAToZ();
+        } else if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by Z-A")) {
+            sortByAToZ();
+            //array;
         } else {
             for (int i = 0; i <= searchResults.getItems().size(); i++)
                 if (searchResults.getItems().contains("Drink")) {
@@ -88,7 +66,22 @@ public class searchController {
             //sortedResults = searchResults;
         }
     }
-
+    private void sortByAToZ(){
+        array = new int[searchResults.getItems().size()];
+        System.out.println(searchResults.getItems().size());
+        for (int i = 0; i <searchResults.getItems().size(); i++) {
+            array[i] = hash(results.get(i));
+        }
+        insertionSort(array);
+        searchResults.getItems().clear();
+        for (int value : array) {
+            for (String result : results) {
+                if (value == hash(result)) {
+                    searchResults.getItems().add(result);
+                }
+            }
+        }
+    }
     /**
      * an attempt an insertion sort
      * @param a
@@ -103,27 +96,7 @@ public class searchController {
     }
 
     /**
-     * src: https://www.javatpoint.com/selection-sort-in-java
-     *
-     * @param arr
-     */
-    public int[] selectionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int spare = i;
-            for (int e = i; e < arr.length; e++) {
-                if (arr[e] < arr[spare])
-                    spare = e;
-            }
-            int smallestNum = arr[spare];
-            arr[spare] = arr[i];
-            arr[i] = smallestNum;
-        }
-        return arr;
-    }
-
-    /**
      * hashes a string based on the first char in the drink name
-     *
      * @param str
      * @return
      */
@@ -150,7 +123,7 @@ public class searchController {
      */
     public void startView() {
         sortBy.getItems().clear();
-        sortBy.getItems().addAll("Sort by A->Z", "Sort by ABV %");
+        sortBy.getItems().addAll("Sort by A->Z","Sort by Z->A", "Sort by ABV %");
     }
 
     public void initialize() {
