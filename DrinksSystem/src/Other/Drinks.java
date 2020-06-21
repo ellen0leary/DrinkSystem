@@ -4,7 +4,6 @@ public class Drinks {
     private String name;
     private String country;
     private String description;
-    private String imageLink;
     private int ABV;
 
     /**
@@ -12,13 +11,11 @@ public class Drinks {
      * @param name
      * @param country
      * @param description
-     * @param imageLink
      */
-    public Drinks(String name, String country, String description, String imageLink) {
+    public Drinks(String name, String country, String description) {
         this.name = name;
         this.country = country;
         this.description = description;
-        this.imageLink = imageLink;
     }
 
     /**
@@ -69,21 +66,7 @@ public class Drinks {
         this.description = description;
     }
 
-    /**
-     * gets the image link
-     * @return
-     */
-    public String getImageLink() {
-        return imageLink;
-    }
 
-    /**
-     * sets the image link
-     * @param imageLink
-     */
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
-    }
 
     /**
      * creates a to string for drinks
@@ -94,7 +77,6 @@ public class Drinks {
         return "Drinks " +
                 "name = " + name  +
                 ", country = " + country  +
-                ", description = " + description  +
-                ", imageLink = " + imageLink  ;
+                ", description = " + description ;
     }
 }

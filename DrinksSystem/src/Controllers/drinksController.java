@@ -11,7 +11,7 @@ import static Other.Main.drink;
 public class drinksController {
     public static drinksController drinkController;
     public Button Cancel, saveShow;
-    public TextField Name,Country,Description,ImageLink;
+    public TextField Name,Country,Description;
 
     /**
      * load the main menu page
@@ -29,8 +29,7 @@ public class drinksController {
         String name = Name.getText();
         String country = Country.getText();
         String description = Description.getText();
-        String imageLink = ImageLink.getText();
-        drink.add(new Drinks(name,country,description,imageLink));
+        drink.add(new Drinks(name,country,description));
         clearFields();
         Main.setMainMenu();
     }
@@ -42,7 +41,6 @@ public class drinksController {
         Name.setText("");
         Country.setText("");
         Description.setText("");
-        ImageLink.setText("");
     }
 
     /**
@@ -54,6 +52,5 @@ public class drinksController {
         Name.setText(drink.get(i).getName());
         Country.setText(drink.get(i).getCountry());
         Description.setText(drink.get(i).getDescription());
-        ImageLink.setText(drink.get(i).getImageLink());
     }
 }
