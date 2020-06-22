@@ -4,41 +4,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Recipes {
-    private Drinks drink;
+    private String name;
+    private HashMap<Drinks, Integer> drink;
     private HashMap<Ingredients, Integer> ingredients;
-    private int quantities;
     private String recipeSteps;
 
     /**
      * Constructor for recipes
      * @param drink details of drink used
      * @param ingredients list of ingredients
-     * @param quantities amounts of quantities
      * @param recipeSteps Steps of the recipies
      */
-    public Recipes(Drinks drink, HashMap<Ingredients, Integer> ingredients, int quantities, String recipeSteps) {
+    public Recipes(String name,HashMap<Drinks, Integer> drink, HashMap<Ingredients, Integer> ingredients, String recipeSteps) {
+        this.name =name;
         this.drink = drink;
         this.ingredients = ingredients;
-        this.quantities = quantities;
         this.recipeSteps = recipeSteps;
     }
 
-    /**
-     * get the drink involved in the recipies
-     * @return the drink used
-     */
-    public Drinks getDrink() {
-        return drink;
-    }
 
-    /**
-     * set the drink used in the recipe
-     * @param drink
-     */
-    public void setDrink(Drinks drink) {
-        this.drink = drink;
-    }
+    public HashMap<Drinks, Integer> getDrink() {return drink;}
 
+    public void setDrink(HashMap<Drinks, Integer> drink) {this.drink = drink; }
     /**
      * gets the ingredents
      * @return ingredents
@@ -53,22 +40,6 @@ public class Recipes {
      */
     public void setIngredients(HashMap<Ingredients, Integer> ingredients) {
         this.ingredients = ingredients;
-    }
-
-    /**
-     * gets the quatities of ingredients
-     * @return quantities of ingredients
-     */
-    public int getQuantities() {
-        return quantities;
-    }
-
-    /**
-     *| sets the quantities of ingredients used
-     * @param quantities
-     */
-    public void setQuantities(int quantities) {
-        this.quantities = quantities;
     }
 
     /**
@@ -96,7 +67,15 @@ public class Recipes {
         return "Recipes " +
                 "drink = " + drink +
                 ", ingredients = " + ingredients.toString()  +
-                ", quantities = " + quantities +
+                ", drinks = " + drink.toString() +
                 ", recipeSteps = " + recipeSteps ;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

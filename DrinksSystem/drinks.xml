@@ -3,13 +3,47 @@
     <head>
       <next>
         <contents class="Other.Ingredients">
-          <name>lemon juice</name>
+          <name>Red Wine</name>
+          <description>A fruity wine</description>
+          <ABV>14</ABV>
+        </contents>
+      </next>
+      <contents class="Other.Ingredients">
+        <name>Vodka</name>
+        <description>Hard liquear</description>
+        <ABV>30</ABV>
+      </contents>
+    </head>
+  </Other.GenericLinkedList>
+  <Other.GenericLinkedList>
+    <head>
+      <next>
+        <next>
+          <next>
+            <contents class="Other.Drinks">
+              <name>Coke</name>
+              <country>America</country>
+              <description>Its coke</description>
+              <ABV>0</ABV>
+            </contents>
+          </next>
+          <contents class="Other.Drinks">
+            <name>Soda Water</name>
+            <country>America</country>
+            <description>Its soda water</description>
+            <ABV>0</ABV>
+          </contents>
+        </next>
+        <contents class="Other.Drinks">
+          <name>Lemon juice</name>
+          <country>Italy</country>
           <description>Its lemon juice</description>
           <ABV>0</ABV>
         </contents>
       </next>
-      <contents class="Other.Ingredients">
-        <name>lime juice</name>
+      <contents class="Other.Drinks">
+        <name>Lime juice</name>
+        <country>Spain</country>
         <description>Its lime juice</description>
         <ABV>0</ABV>
       </contents>
@@ -17,14 +51,31 @@
   </Other.GenericLinkedList>
   <Other.GenericLinkedList>
     <head>
-      <contents class="Other.Drinks">
-        <name>red wine</name>
-        <country>italy</country>
-        <description>a fruity wine from Italy</description>
-        <imageLink></imageLink>
-        <ABV>0</ABV>
+      <contents class="Other.Recipes">
+        <name>Vodka and coke</name>
+        <drink>
+          <entry>
+            <Other.Drinks>
+              <name>Coke</name>
+              <country>America</country>
+              <description>Its coke</description>
+              <ABV>0</ABV>
+            </Other.Drinks>
+            <int>50</int>
+          </entry>
+        </drink>
+        <ingredients>
+          <entry>
+            <Other.Ingredients>
+              <name>Vodka</name>
+              <description>Hard liquear</description>
+              <ABV>30</ABV>
+            </Other.Ingredients>
+            <int>25</int>
+          </entry>
+        </ingredients>
+        <recipeSteps>Mix vodka and coke together</recipeSteps>
       </contents>
     </head>
   </Other.GenericLinkedList>
-  <Other.GenericLinkedList/>
 </object-stream>

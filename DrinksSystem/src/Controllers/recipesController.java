@@ -14,10 +14,12 @@ public class recipesController {
 
     public static recipesController recipeController;
     public Button RecipeSaveButton,cancel;
-    public TextField amount, steps;
+    public TextField amount, drinkQuant,nameEntered;
+    public TextArea steps;
     public ChoiceBox<String> drinksList;
     public ChoiceBox<String> ingredientList;
     public HashMap<Ingredients, Integer> ingredientsAndAmount = new HashMap<>();
+    public HashMap<Drinks, Integer> drinksMap = new HashMap<>();
     public ListView<String> ingredAndAmount;
 
     /**
@@ -43,19 +45,27 @@ public class recipesController {
      * ands the ingredient and amount
      */
     public void addIngredientAndAmount(){
-        Ingredients chossenIngredent = Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex());
-        ingredientsAndAmount.put(chossenIngredent, Integer.parseInt(amount.getText()));
-        ingredAndAmount.getItems().add(chossenIngredent.getName() +" "+amount.getText()+" ml");
+        Ingredients chosenIngredient = Main.ingredient.get(ingredientList.getSelectionModel().getSelectedIndex());
+        ingredientsAndAmount.put(chosenIngredient, Integer.parseInt(amount.getText()));
+        ingredAndAmount.getItems().add(chosenIngredient.getName() +" "+amount.getText()+" ml");
+        amount.setText("");
+        ingredientList.getSelectionModel().clearSelection();
     }
 
+    public void addDrinkandQuant(){
+        Drinks chosenDrink = drink.get(drinksList.getSelectionModel().getSelectedIndex());
+        drinksMap.put(chosenDrink, Integer.parseInt(drinkQuant.getText()));
+        ingredAndAmount.getItems().add(chosenDrink.getName()+ " "+drinkQuant.getText()+ " ml");
+        drinkQuant.setText("");
+        drinksList.getSelectionModel().clearSelection();
+    }
     /**
      * saves the recipes
      */
     public void RecipeSaveButton() {
-        Drinks drinkChoice = drink.get(drinksList.getSelectionModel().getSelectedIndex());
-        int quantities = Integer.parseInt(amount.getText());
+        String drinkName = nameEntered.getText();
         String recipeSteps = steps.getText();
-        recipe.add(new Recipes(drinkChoice, ingredientsAndAmount, quantities, recipeSteps));
+        recipe.add(new Recipes(drinkName, drinksMap, ingredientsAndAmount, recipeSteps));
         Main.setMainMenu();
         clearField();
     }
@@ -71,9 +81,11 @@ public class recipesController {
      * clears all the fields
      */
     private void clearField() {
+        nameEntered.setText("");
         drinksList.setValue(null);
         amount.setText("");
         steps.setText("");
+        drinkQuant.setText("");
     }
     public void initialize(){
         recipeController = this;

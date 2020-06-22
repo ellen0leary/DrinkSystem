@@ -14,9 +14,9 @@ public class GenericLinkListTest {
     GenericLinkedList g;
     @Before
     public void setUp() throws Exception {
-        d1 = new Drinks("Cola", "America", "It's cola", "https://www.coca-cola.ie/content/dam/journey/gb/en/hidden/Products/lead-brand-image/coca-cola-original-taste-gb-lead-598x336.rendition.320.179.jpg");
-        d2 = new Drinks("Water", "literally everywhere","It's water","https://www.bbcgoodfood.com/sites/default/files/editor_files/2019/10/hydration-guide-main-image-700-350.jpg");
-        d3 = new Drinks("Carlsberg","Denmark","A 3.8% danish pilsner","https://nutsaboutwine.ie/wp-content/uploads/2015/01/carlsberg-bottle1.jpg");
+        d1 = new Drinks("Cola", "America", "It's cola");
+        d2 = new Drinks("Water", "literally everywhere","It's water");
+        d3 = new Drinks("Carlsberg","Denmark","A 3.8% danish pilsner");
 
         g = new GenericLinkedList();
         g.add(d1);

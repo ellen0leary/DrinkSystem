@@ -15,19 +15,20 @@ public class RecipesTest {
     Ingredients i1, i2;
     Drinks d1,d2;
     HashMap<Ingredients, Integer> ingredients = new HashMap<>();
+    HashMap<Drinks, Integer> drinks = new HashMap<>();
 
     @Before
     public void setUp() throws Exception {
-        d1 = new Drinks("Vodka","Russia","Its vodka","a link");
-        d2= new Drinks("Rum","Somewhere","Its rum","another link");
+        d1 = new Drinks("Vodka","Russia","Its vodka");
+        d2= new Drinks("Rum","Somewhere","Its rum");
 
         i1 = new Ingredients("Lemon","Its a lemon",0);
         i2 = new Ingredients("Lime","Its a green lemon",0);
 
         ingredients.put(i1, 40);
-        ingredients.put(i2, 60);
-        r1 = new Recipes(d1,ingredients,30,"Mix vodka and lemon");
-        r2 = new Recipes(d1,ingredients,200,"Mix Vodka and Cola");
+        drinks.put(d1, 25);
+        r1 = new Recipes("Vodka and lemon",drinks,ingredients,"Mix vodka and lemon");
+        r2 = new Recipes("Vodka and coke",drinks,ingredients,"Mix Vodka and Cola");
 
     }
 
@@ -36,17 +37,33 @@ public class RecipesTest {
     }
 
     @Test
+    public void getName(){
+        assertEquals("Vodka and lemon", r1.getName());
+        assertEquals("Vodka and coke", r2.getName());
+    }
+
+    @Test
+    public void setName(){
+        r1.setName("Vodka and coke");
+        assertEquals("Vodka and coke", r1.getName());
+        r2.setName("Rum and Coke");
+        assertEquals("Rum and Coke", r2.getName());
+    }
+    @Test
     public void getDrink() {
-        assertEquals(d1, r1.getDrink());
-        assertEquals(d1,r2.getDrink());
+        assertEquals(drinks, r1.getDrink());
+        assertEquals(drinks,r2.getDrink());
     }
 
     @Test
     public void setDrink() {
-        r1.setDrink(d2);
-        assertEquals(d2, r1.getDrink());
-        r2.setDrink(d2);
-        assertEquals(d2,r2.getDrink());
+        drinks.clear();
+        drinks.put(d2, 25);
+        r1.setDrink(drinks);
+        assertEquals(drinks, r1.getDrink());
+        drinks.put(d1, 50);
+        r2.setDrink(drinks);
+        assertEquals(drinks,r2.getDrink());
     }
 
     @Test
@@ -68,20 +85,6 @@ public class RecipesTest {
     }
 
     @Test
-    public void getQuantites() {
-        assertEquals(30,r1.getQuantities());
-        assertEquals(200,r2.getQuantities());
-    }
-
-    @Test
-    public void setQuantites() {
-        r1.setQuantities(50);
-        assertEquals(50,r1.getQuantities());
-        r2.setQuantities(500);
-        assertEquals(500,r2.getQuantities());
-    }
-
-    @Test
     public void getRecipieSteps() {
         assertEquals("Mix vodka and lemon",r1.getRecipeSteps());
         assertEquals("Mix Vodka and Cola",r2.getRecipeSteps());
@@ -100,7 +103,6 @@ public class RecipesTest {
     public void toStringUsingAllFields() {
         assertThat(r1.toString().contains("Vodka"), is(true));
         assertThat(r1.toString().contains("Lemon"), is(true));
-        assertThat(r1.toString().contains("30"), is(true));
         assertThat(r1.toString().contains("Mix vodka and lemon"), is(true));
     }
 }
