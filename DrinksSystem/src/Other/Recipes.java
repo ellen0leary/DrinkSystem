@@ -1,33 +1,40 @@
 package Other;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+
+import static Other.Main.ingredient;
 
 public class Recipes {
     private String name;
-    private HashMap<Drinks, Integer> drink;
+    private HashMap<Drinks, Integer> drinks;
     private HashMap<Ingredients, Integer> ingredients;
     private String recipeSteps;
+    private int abv;
 
     /**
      * Constructor for recipes
-     * @param drink details of drink used
+     * @param drinks details of drink used
      * @param ingredients list of ingredients
      * @param recipeSteps Steps of the recipies
      */
-    public Recipes(String name,HashMap<Drinks, Integer> drink, HashMap<Ingredients, Integer> ingredients, String recipeSteps) {
+    public Recipes(String name,HashMap<Drinks, Integer> drinks, HashMap<Ingredients, Integer> ingredients, String recipeSteps) {
         this.name =name;
-        this.drink = drink;
+        this.drinks = drinks;
         this.ingredients = ingredients;
         this.recipeSteps = recipeSteps;
+        for(int i=0; i<ingredient.length(); i++){
+            if(ingredients.containsKey(ingredient.get(i))){
+                abv+= ingredient.get(i).getABV();
+            }
+        }
     }
 
 
-    public HashMap<Drinks, Integer> getDrink() {return drink;}
+    public HashMap<Drinks, Integer> getDrink() {return drinks;}
 
-    public void setDrink(HashMap<Drinks, Integer> drink) {this.drink = drink; }
+    public void setDrink(HashMap<Drinks, Integer> drink) {this.drinks = drink; }
     /**
-     * gets the ingredents
+     * gets the ingredients
      * @return ingredents
      */
     public HashMap<Ingredients, Integer> getIngredients() {
@@ -65,9 +72,9 @@ public class Recipes {
     @Override
     public String toString() {
         return "Recipes " +
-                "drink = " + drink +
+                "Recipe name = " + name +
                 ", ingredients = " + ingredients.toString()  +
-                ", drinks = " + drink.toString() +
+                ", drinks = " + drinks.toString() +
                 ", recipeSteps = " + recipeSteps ;
     }
 
@@ -78,4 +85,7 @@ public class Recipes {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getAbv() {return abv;}
+    public void setAbv(int abv) { this.abv = abv;}
 }

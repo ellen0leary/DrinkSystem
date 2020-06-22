@@ -1,12 +1,17 @@
 package Controllers;
 
+import Other.Drinks;
+import Other.Ingredients;
 import Other.Main;
+import Other.Recipes;
+import com.sun.javafx.image.IntPixelGetter;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static Other.Main.*;
 
@@ -17,7 +22,7 @@ public class searchController {
     public ListView<String> searchResults;
     public ChoiceBox<String> sortBy;
     public ArrayList<String> results = new ArrayList<>();
-    //public ChoiceBox drinksIngore, ingredientsIngore, repiceIngore;
+    public ArrayList<Integer> abvResults = new ArrayList<>();
     int[] array;
 
     /**
@@ -33,7 +38,8 @@ public class searchController {
                     (drink.get(i).toString().contains(ABVSelection)) ||
                     (drink.get(i).getName().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(drink.get(i).toString());
-                results.add(drink.get(i).toString());
+                results.add(drink.get(i).getName());
+                abvResults.add(0);
             }
         }
         for (int i = 0; i < ingredient.length(); i++) {
@@ -41,7 +47,8 @@ public class searchController {
                     (ingredient.get(i).toString().toLowerCase().contains(ABVSelection)) ||
                     (ingredient.get(i).toString().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(ingredient.get(i).toString());
-                results.add(ingredient.get(i).toString());
+                results.add(ingredient.get(i).getName());
+                abvResults.add(ingredient.get(i).getABV());
             }
         }
         for (int i = 0; i < recipe.length(); i++) {
@@ -49,7 +56,8 @@ public class searchController {
                     (recipe.get(i).toString().toLowerCase().contains(ABVSelection)) ||
                     (recipe.get(i).getRecipeSteps().toLowerCase().contains(descriptionSelection))) {
                 searchResults.getItems().add(recipe.get(i).toString());
-                results.add(recipe.get(i).toString());
+                results.add(recipe.get(i).getName());
+                abvResults.add(recipe.get(i).getAbv());
             }
         }
     }
@@ -60,15 +68,48 @@ public class searchController {
     public void sort() {
         if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by A->Z")) {
             sortByAToZ();
-        } else if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by Z-A")) {
+        } else if (sortBy.getSelectionModel().getSelectedItem().equals("Sort by Z->A")) {
             sortByZToA();
         } else {
-            for (int i = 0; i <= searchResults.getItems().size(); i++)
-                if (searchResults.getItems().contains("Drink")) {
-                }
+            sortByABV();
+
         }
     }
 
+    private void sortByABV(){
+        int[] arr = new int[abvResults.size()];
+        for (int i = 0; i < abvResults.size(); i++) {
+            arr[i] = abvResults.get(i);
+        }
+        insertionSort(arr);
+        searchResults.getItems().clear();
+        for(Drinks drinks: drink){
+            if(results.contains(drinks.getName()))
+                searchResults.getItems().add(drinks.toString());
+        }
+        for (int i=0; i<arr.length;i++) {
+            int j=0;
+            for(int x=0; x<abvResults.size(); x++){
+                if(arr[i] == abvResults.get(x)){
+                    j = abvResults.get(x);
+                    abvResults.remove(x);
+                    break;
+                }
+            }
+            for(Ingredients ingredients: ingredient){
+                if(ingredients.getABV() == j && results.contains(ingredients.getName())) {
+                    searchResults.getItems().add(ingredients.toString());
+                    results.remove(ingredients.getName());
+                }
+            }
+            for(Recipes recipes: recipe){
+                if(recipes.getAbv() == j&& results.contains(recipes.getName())) {
+                    searchResults.getItems().add(recipes.toString());
+                    results.remove(recipes.getName());
+                }
+            }
+        }
+    }
     private void sortByAToZ() {
         array = new int[searchResults.getItems().size()];
         System.out.println(searchResults.getItems().size());
@@ -77,11 +118,28 @@ public class searchController {
         }
         insertionSort(array);
         searchResults.getItems().clear();
-        for (int value : array) {
+        String answer = "";
+        for (int i = 0; i < array.length; i++) {
             for (String result : results) {
-                if (value == hash(result)) {
-                    searchResults.getItems().add(result);
+                if (array[i] == hash(result)) {
+                    answer = result;
+                    results.remove(result);
+                    break;
                 }
+            }
+
+            for (Ingredients ingredients : ingredient) {
+                if (ingredients.getName().equals(answer)) {
+                    searchResults.getItems().add(ingredients.toString());
+                }
+            }
+            for (Drinks drinks : drink) {
+                if (drinks.getName().equals(answer))
+                    searchResults.getItems().add(drinks.toString());
+            }
+            for (Recipes recipes : recipe) {
+                if (recipes.getName().equals(answer))
+                    searchResults.getItems().add(recipes.toString());
             }
         }
     }
@@ -94,14 +152,32 @@ public class searchController {
         }
         insertionSort(array);
         searchResults.getItems().clear();
-        for (int i = array.length - 1; i > 0; i--) {
+        String answer = "";
+        for (int i = array.length - 1; i >= 0; i--) {
             for (String result : results) {
                 if (array[i] == hash(result)) {
-                    searchResults.getItems().add(result);
+                    answer = result;
+                    results.remove(result);
+                    break;
                 }
+            }
+
+            for (Ingredients ingredients : ingredient) {
+                if (ingredients.getName().equals(answer)) {
+                    searchResults.getItems().add(ingredients.toString());
+                }
+            }
+            for (Drinks drinks : drink) {
+                if (drinks.getName().equals(answer))
+                    searchResults.getItems().add(drinks.toString());
+            }
+            for (Recipes recipes : recipe) {
+                if (recipes.getName().equals(answer))
+                    searchResults.getItems().add(recipes.toString());
             }
         }
     }
+
 
     /**
      * an attempt an insertion sort
@@ -124,11 +200,7 @@ public class searchController {
      * @return
      */
     public int hash(String str) {
-        int hash = 7;
-        for (int i = 0; i < str.length(); i++) {
-            hash = 13 * hash + str.charAt(i);
-        }
-        return hash;
+        return str.charAt(0) + str.charAt(1);
     }
 
     /**

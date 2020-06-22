@@ -1,50 +1,19 @@
 <object-stream>
   <Other.GenericLinkedList>
     <head>
-      <next>
-        <contents class="Other.Ingredients">
-          <name>Red Wine</name>
-          <description>A fruity wine</description>
-          <ABV>14</ABV>
-        </contents>
-      </next>
       <contents class="Other.Ingredients">
         <name>Vodka</name>
-        <description>Hard liquear</description>
+        <description>Hard liquer</description>
         <ABV>30</ABV>
       </contents>
     </head>
   </Other.GenericLinkedList>
   <Other.GenericLinkedList>
     <head>
-      <next>
-        <next>
-          <next>
-            <contents class="Other.Drinks">
-              <name>Coke</name>
-              <country>America</country>
-              <description>Its coke</description>
-              <ABV>0</ABV>
-            </contents>
-          </next>
-          <contents class="Other.Drinks">
-            <name>Soda Water</name>
-            <country>America</country>
-            <description>Its soda water</description>
-            <ABV>0</ABV>
-          </contents>
-        </next>
-        <contents class="Other.Drinks">
-          <name>Lemon juice</name>
-          <country>Italy</country>
-          <description>Its lemon juice</description>
-          <ABV>0</ABV>
-        </contents>
-      </next>
       <contents class="Other.Drinks">
-        <name>Lime juice</name>
-        <country>Spain</country>
-        <description>Its lime juice</description>
+        <name>Coke</name>
+        <country>America</country>
+        <description>Its coke</description>
         <ABV>0</ABV>
       </contents>
     </head>
@@ -52,8 +21,8 @@
   <Other.GenericLinkedList>
     <head>
       <contents class="Other.Recipes">
-        <name>Vodka and coke</name>
-        <drink>
+        <name>Vodka and Conke</name>
+        <drinks>
           <entry>
             <Other.Drinks>
               <name>Coke</name>
@@ -63,18 +32,19 @@
             </Other.Drinks>
             <int>50</int>
           </entry>
-        </drink>
+        </drinks>
         <ingredients>
           <entry>
             <Other.Ingredients>
               <name>Vodka</name>
-              <description>Hard liquear</description>
+              <description>Hard liquer</description>
               <ABV>30</ABV>
             </Other.Ingredients>
             <int>25</int>
           </entry>
         </ingredients>
-        <recipeSteps>Mix vodka and coke together</recipeSteps>
+        <recipeSteps>Minx vodka and coke together</recipeSteps>
+        <abv>30</abv>
       </contents>
     </head>
   </Other.GenericLinkedList>
